@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.0"></script>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffebcd;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ff4081;
+            padding: 15px;
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Page Layout */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .box {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Pop-Up */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            animation: bounce 0.8s ease-out;
+            text-align: center;
+        }
+
+        #popup img {
+            max-width: 100%;
+            border-radius: 10px;
+            animation: rotate 1.5s infinite alternate ease-in-out;
+        }
+
+        #close {
+            background: #ff4081;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+            100% { transform: rotate(-5deg); }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <h1>🎉 Birthday Celebration</h1>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Guestbook</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="box">
+            <h2>🎂 Welcome to the Birthday Page!</h2>
+            <p>Enjoy the party and make wonderful memories!</p>
+        </div>
+        <div class="box">
+            <h2>📸 Photo Gallery</h2>
+            <p>Share your favorite moments with friends!</p>
+        </div>
+    </div>
+
+    <!-- Birthday Pop-Up -->
+    <div id="popup">
+        <h2>🎉 Happy Birthday! 🎂</h2>
+        <p>Wishing you a fantastic day filled with love and joy!</p>
+        <img src="birthday-image.jpg" alt="Birthday Celebration">
+        <br><br>
+        <button id="close">Close</button>
+    </div>
+
+    <script>
+        // Show pop-up on page load
+        window.onload = function() {
+            document.getElementById("popup").style.display = "block";
+
+            // Confetti burst
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        };
+        
+        // Close pop-up when button is clicked
+        document.getElementById("close").onclick = function() {
+            document.getElementById("popup").style.display = "none";
+        };
+    </script>
+
+</body>
+</html>
